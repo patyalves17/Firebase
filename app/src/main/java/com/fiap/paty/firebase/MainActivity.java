@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mFirebaseAnalytics=FirebaseAnalytics.getInstance(this);
         FirebaseMessaging.getInstance().subscribeToTopic("mob");
     }
+
 
     public void ClickMe(View v){
         Log.i("Click","Click");
@@ -28,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent("clickMe",params);
     }
 
-    public void crash(View v){
-        Log.i("Crash","Crash");
-       int i=2/0;
-    }
+   
+
+
 }
